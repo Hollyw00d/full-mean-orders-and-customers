@@ -1,7 +1,7 @@
 // server routes
 
 // First at the top of your routes.js file you'll have to require the controller
-var friends = require("./../controllers/friends.js");
+var customers = require("./../controllers/customers.js");
 
 // This is our routes.js file located in /config/routes.js
 // This is where we will define all of our routing rules!
@@ -12,27 +12,27 @@ module.exports = function(app) {
         res.render("index.html");
     });
 
-    // Friends are displayed on a friends page
+    // customers are displayed on a customers page
     // AND index page
-    app.get("/friends", function(req, res) {
-        // "friends" references the
-        // "friends.js" controller and
+    app.get("/customers", function(req, res) {
+        // "customers" references the
+        // "customers.js" controller and
         // "show" is a method of said
-        // "friends.js" controller
+        // "customers.js" controller
 
-        friends.show(req, res);
+        customers.show(req, res);
 
     });
 
 
     app.post("/save", function(req, res) {
 
-        friends.saveFriend(req, res);
+        customers.saveCustomer(req, res);
     });
 
     app.get("/destroy/:id", function(req, res) {
 
-        friends.deleteFriend(req, res);
+        customers.deleteCustomer(req, res);
 
     });
 

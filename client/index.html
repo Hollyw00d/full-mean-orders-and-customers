@@ -1,38 +1,24 @@
-<html ng-app="friends_app">
+<html ng-app="customers_app">
 <head>
-    <title>Full Mean Demo</title>
+    <title>Full Mean Orders and Customers</title>
     <!-- require angular -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
 
     <script type="text/javascript" src="javascripts/app.js"></script>
-    <script type="text/javascript" src="javascripts/factories/friendFactory.js"></script>
-    <script type="text/javascript" src="javascripts/controllers/friendsController.js"></script>
+    <script type="text/javascript" src="javascripts/factories/customerFactory.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/customersController.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/styles.css"/>
 
 </head>
-<!-- everything in the body is going to use the friends controller (this gives us access to the friends controller $scope) -->
-<body ng-controller="FriendsController">
-<h1>Friends</h1>
+<!-- everything in the body is going to use the customers controller (this gives us access to the customers controller $scope) -->
+<body>
 
-<!--
-The form tag doesn't need an action because
-it submits twice
--->
-<form>
-    <input type="text" ng-model="filter_name" placeholder="filter">
-    <ul>
-        <!-- here is where we are going to display friends -->
-        <li ng-repeat="friend in friends | filter: filter_name">
-            {{friend.name}}, {{friend.age}} <a href="/destroy/{{ friend._id }}">Delete</a>
-        </li>
-    </ul>
-    <h1>Add a Friend</h1>
-    <!-- objects and properties nothing scary -->
-    <input type="text" ng-model="new_friend.name" placeholder="name">
-    <input type="text" ng-model="new_friend.age" placeholder="age">
-    <!-- addfriend() is a method we are going to make in the angular controller -->
-    <input type="submit" ng-click="addfriend()">
+<!-- Points to partials -->
+<div id="wrapper" ng-view="">
 
-</form>
+</div>
 
 </body>
 </html>
