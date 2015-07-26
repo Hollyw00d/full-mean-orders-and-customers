@@ -1,0 +1,38 @@
+<html ng-app="friends_app">
+<head>
+    <title>Full Mean Demo</title>
+    <!-- require angular -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+
+    <script type="text/javascript" src="javascripts/app.js"></script>
+    <script type="text/javascript" src="javascripts/factories/friendFactory.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/friendsController.js"></script>
+
+</head>
+<!-- everything in the body is going to use the friends controller (this gives us access to the friends controller $scope) -->
+<body ng-controller="FriendsController">
+<h1>Friends</h1>
+
+<!--
+The form tag doesn't need an action because
+it submits twice
+-->
+<form>
+    <input type="text" ng-model="filter_name" placeholder="filter">
+    <ul>
+        <!-- here is where we are going to display friends -->
+        <li ng-repeat="friend in friends | filter: filter_name">
+            {{friend.name}}, {{friend.age}} <a href="/destroy/{{ friend._id }}">Delete</a>
+        </li>
+    </ul>
+    <h1>Add a Friend</h1>
+    <!-- objects and properties nothing scary -->
+    <input type="text" ng-model="new_friend.name" placeholder="name">
+    <input type="text" ng-model="new_friend.age" placeholder="age">
+    <!-- addfriend() is a method we are going to make in the angular controller -->
+    <input type="submit" ng-click="addfriend()">
+
+</form>
+
+</body>
+</html>
