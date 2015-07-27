@@ -5,6 +5,7 @@ var customers_app = angular.module("customers_app", ["ngRoute"]);
 
 // Get routes for partials
 customers_app.config(function($routeProvider) {
+
     $routeProvider
         .when("/", {
             templateUrl: "partials/orders.html"

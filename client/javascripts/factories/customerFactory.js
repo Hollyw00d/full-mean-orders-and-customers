@@ -19,7 +19,7 @@ customers_app.factory("CustomerFactory", function($http) {
     factory.addCustomer = function(info, callback) {
 
         $http.post("/save", info).success(function() {
-            customers.push({name: info.name, age: info.age});
+            customers.push({name: info.name});
             callback(customers);
         });
 

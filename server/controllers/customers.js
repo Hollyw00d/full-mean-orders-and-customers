@@ -41,6 +41,7 @@ module.exports = (function() {
                     console.log("Customer POSTED", customer);
 
                     res.redirect("/");
+
                 }
 
             });
@@ -56,10 +57,8 @@ module.exports = (function() {
                 }
                 else {
                     console.log("Customer deleted!");
-                    res.redirect("/#customers");
+                    res.redirect("/customers");
                 }
-
-
 
             });
 

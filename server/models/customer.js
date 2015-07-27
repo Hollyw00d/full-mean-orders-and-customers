@@ -4,10 +4,10 @@
 // We want to create a file that has the schema for our customers and creates a model that we can then call upon in our controller
 var mongoose = require('mongoose');
 
-// create our CustomerSchema
 var CustomerSchema = new mongoose.Schema({
     name: String,
-    age: Number
+    //created_at: {type: Date, default: Date.now }
+    created_at: {type: Date, default: Date.now}
 });
 
 
