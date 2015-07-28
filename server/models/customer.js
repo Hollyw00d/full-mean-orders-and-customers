@@ -1,17 +1,46 @@
 // server model
+//var express = require("express");
+//var app = express();
+//var bodyParser = require("body-parser");
+//app.use(bodyParser());
+
 
 // This is the customer.js file located at /server/models/customer.js
 // We want to create a file that has the schema for our customers and creates a model that we can then call upon in our controller
-var mongoose = require('mongoose');
+var mongoose = require("mongoose")
 
 var CustomerSchema = new mongoose.Schema({
-    name: String,
-    //created_at: {type: Date, default: Date.now }
+    name: { type: String, unique: true, trim: true },
     created_at: {type: Date, default: Date.now}
 });
 
 
+// Form validations
+CustomerSchema.path("name").required(true, "Customer name cannot be blank.");
+
+CustomerSchema.path("name").validate(function(val) {
+    return val.length > 1;
+}, "Customer name must be two letters or more.");
+
+//CustomerSchema.path("name").validate(function(val) {
+//    return CustomerSchema.name == val;
+//}, "Customer name already in use. Please add another name.");
+
+//CustomerSchema.path("name").validate(function(val, res) {
+//    CustomerSchema.findOne({ name: val }, function(err, customerName) {
+//       if(err) {
+//           throw err;
+//       }
+//       if(customerName) {
+//           return res(false);
+//       }
+//
+//    });
+//}, "Customer name is taken. Please add another name.");
+
+
+
 // use the schema to create the model
 // Note that creating a model CREATES the collection in the database (makes the collection plural)
-mongoose.model('Customer', CustomerSchema);
+mongoose.model("Customer", CustomerSchema);
 // notice that we aren't exporting anything -- this is because this file will be run when we require it using our config file and then since the model is defined we'll be able to access it from our controller

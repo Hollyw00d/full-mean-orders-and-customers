@@ -9,15 +9,14 @@ customers_app.controller("customersController", function($scope, CustomerFactory
         $scope.customers = data;
     });
 
-
     $scope.addCustomer = function() {
 
-        CustomerFactory.addCustomer($scope.new_customer, function () {
+        CustomerFactory.addCustomer($scope.new_customer, function (errors) {
 
-            CustomerFactory.getCustomers(function (data) {
+           $scope.errors = errors;
 
+           CustomerFactory.getCustomers(function (data) {
                 $scope.customers = data;
-
             });
 
             $scope.new_customer = {};

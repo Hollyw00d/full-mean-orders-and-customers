@@ -50,3 +50,24 @@ body {
     display: inline-block;
     margin: 0 0 0 560px;
 }
+
+#orders-form select {
+    margin: 0 0 0 10px;
+}
+
+#orders-form select[name=customer] {
+    width: 150px;
+}
+
+#orders-form select[name=products] {
+    width: 120px;
+}
+
+#orders-form input[type=submit] {
+    margin: 0 0 0 188px;
+}
+
+#search-customer-order input {
+    width: 200px;
+    margin: 0 0 0 719px;
+}

@@ -2,6 +2,7 @@
 
 // First at the top of your routes.js file you'll have to require the controller
 var customers = require("./../controllers/customers.js");
+var products = require("./../controllers/products.js");
 
 // This is our routes.js file located in /config/routes.js
 // This is where we will define all of our routing rules!
@@ -9,7 +10,7 @@ var customers = require("./../controllers/customers.js");
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
-        res.render("index.html");
+        res.render("index.ejs");
     });
 
     // customers are displayed on a customers page
@@ -21,12 +22,10 @@ module.exports = function(app) {
         // "customers.js" controller
 
         customers.show(req, res);
-
     });
 
 
     app.post("/save", function(req, res) {
-
         customers.saveCustomer(req, res);
     });
 
@@ -36,7 +35,7 @@ module.exports = function(app) {
 
     });
 
-
-
-
+    app.get("/products", function(req, res) {
+        products.showProducts(req, res);
+    });
 };

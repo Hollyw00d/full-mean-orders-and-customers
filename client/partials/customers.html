@@ -8,6 +8,8 @@
 
         <p id="search-name"><input type="text" ng-model="filter_name" placeholder="search name"></p>
 
+        <p ng-bind="errors.errors.name.message"></p>
+
         <table class="customers-orders-table">
             <thead>
                 <tr>

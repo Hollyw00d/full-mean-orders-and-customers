@@ -2,8 +2,8 @@
 
 // First add the following two lines at the top of the customers controller so that we can access our model through var Customer
 // need to require mongoose to be able to run mongoose.model()
-var mongoose = require('mongoose');
-var Customer = mongoose.model('Customer');
+var mongoose = require("mongoose");
+var Customer = mongoose.model("Customer");
 
 
 // this is our customers.js file located at /server/controllers/customers.js
@@ -29,21 +29,17 @@ module.exports = (function() {
 
             var customer = new Customer(req.body);
 
+
             customer.save(function(err) {
-
-
                 if(err) {
-                    console.log("Adding customer error:", err);
-                    res.redirect("/");
+                    console.log("saveCustomer Server Controller errors:", customer.errors);
+
+                    res.json({title: "you have errors", errors: customer.errors});
                 }
                 else {
-
                     console.log("Customer POSTED", customer);
-
-                    res.redirect("/");
-
+                    res.send(true)
                 }
-
             });
 
         },
@@ -57,7 +53,7 @@ module.exports = (function() {
                 }
                 else {
                     console.log("Customer deleted!");
-                    res.redirect("/customers");
+                    res.redirect("/#customers");
                 }
 
             });
