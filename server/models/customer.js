@@ -28,24 +28,6 @@ OrderSchema.path("product").required(true, "Please select a product.");
 
 OrderSchema.path("quantity").required(true, "Please select a quantity.");
 
-//CustomerSchema.path("name").validate(function(val) {
-//    return CustomerSchema.name == val;
-//}, "Customer name already in use. Please add another name.");
-
-//CustomerSchema.path("name").validate(function(val, res) {
-//    CustomerSchema.findOne({ name: val }, function(err, customerName) {
-//       if(err) {
-//           throw err;
-//       }
-//       if(customerName) {
-//           return res(false);
-//       }
-//
-//    });
-//}, "Customer name is taken. Please add another name.");
-
-
-
 // use the schema to create the model
 // Note that creating a model CREATES the collection in the database (makes the collection plural)
 mongoose.model("Customer", CustomerSchema);
