@@ -5,6 +5,8 @@ customers_app.controller("ordersController", function($scope, CustomerFactory, P
     /****** Use CustomerFactory ******/
     CustomerFactory.getCustomers(function (data) {
         $scope.customers = data;
+
+        //console.log("$scope.customers[0].name:", $scope.customers[0].name);
     });
 
     $scope.addCustomer = function() {
@@ -19,17 +21,14 @@ customers_app.controller("ordersController", function($scope, CustomerFactory, P
 
             $scope.new_customer = {};
 
-
         });
 
     };
-
 
     /****** Use ProductFactory ******/
     ProductFactory.getProducts(function(data) {
         $scope.products = data;
     });
-
 
 
     /****** Use OrderFactory ******/
@@ -50,7 +49,14 @@ customers_app.controller("ordersController", function($scope, CustomerFactory, P
 
             $scope.new_order = {};
 
+
         });
     };
+
+
+
+
+
+
 
 });

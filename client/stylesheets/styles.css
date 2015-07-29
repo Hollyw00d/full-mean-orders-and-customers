@@ -79,3 +79,7 @@ body {
 .success {
     color: green;
 }
+
+select option:empty {
+    display: none;
+}
