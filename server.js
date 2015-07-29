@@ -13,7 +13,6 @@ app.use(express.static(path.join(__dirname + "/client")));
 
 // Set up views & ejs
 app.set("views", path.join(__dirname + "/client"));
-app.set("view engine", "ejs")
 
 // Require mongoose
 require("./server/config/mongoose.js");

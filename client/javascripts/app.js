@@ -16,4 +16,5 @@ customers_app.config(function($routeProvider) {
         .otherwise({
             redirectTo: "/"
         });
+
 });

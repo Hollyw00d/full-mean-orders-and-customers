@@ -71,3 +71,11 @@ body {
     width: 200px;
     margin: 0 0 0 719px;
 }
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}

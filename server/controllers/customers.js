@@ -4,6 +4,7 @@
 // need to require mongoose to be able to run mongoose.model()
 var mongoose = require("mongoose");
 var Customer = mongoose.model("Customer");
+var Order = mongoose.model("Order");
 
 
 // this is our customers.js file located at /server/controllers/customers.js
@@ -37,7 +38,7 @@ module.exports = (function() {
                     res.json({title: "you have errors", errors: customer.errors});
                 }
                 else {
-                    console.log("Customer POSTED", customer);
+                    console.log("Customer added:", customer);
                     res.send(true)
                 }
             });
@@ -56,6 +57,40 @@ module.exports = (function() {
                     res.redirect("/#customers");
                 }
 
+            });
+
+        },
+        showOrders: function(req, res) {
+
+            // Show customer documents from the
+            // "FullMean" Mongo database
+            Order.find({}, function(err, results) {
+                if(err) {
+                    console.log("Mongo Database Show customers Errors:", err);
+                }
+                else {
+                    res.json(results);
+                }
+
+            });
+        },
+        saveOrder: function(req, res) {
+
+            var order = new Order(req.body);
+
+
+            order.save(function(err) {
+                if(err) {
+                    console.log("saveOrder Server Controller errors:", order.errors);
+
+                    res.json({title: "you have errors", errors: order.errors});
+                }
+                else {
+                    // console.log("Order saved:", order);
+
+                    console.log("Order Submitted:", req.body);
+                    res.send(true);
+                }
             });
 
         }

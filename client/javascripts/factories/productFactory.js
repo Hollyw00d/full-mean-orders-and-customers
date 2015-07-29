@@ -4,7 +4,7 @@ customers_app.factory("ProductFactory", function($http) {
     var factory = {};
 
     factory.getProducts = function(callback) {
-        $http.get("/products").success(function(output) {
+        $http.get("/productsObjects").success(function(output) {
             products = output;
             callback(products);
         });

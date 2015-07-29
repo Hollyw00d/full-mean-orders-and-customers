@@ -9,11 +9,12 @@ customers_app.factory("CustomerFactory", function($http) {
         // returns two "$http" specific methods:
         // - "success"
         // - "error"
-        $http.get("/customers").success(function(output) {
+        $http.get("/customersObjects").success(function(output) {
             customers = output;
             callback(customers);
         });
     };
+
     // note the use of callbacks!
     factory.addCustomer = function(info, callback) {
 
@@ -23,5 +24,6 @@ customers_app.factory("CustomerFactory", function($http) {
         });
 
     };
+
     return factory;
 });

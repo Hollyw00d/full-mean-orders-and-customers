@@ -10,17 +10,16 @@ var products = require("./../controllers/products.js");
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
-        res.render("index.ejs");
+        res.render("index");
     });
 
     // customers are displayed on a customers page
     // AND index page
-    app.get("/customers", function(req, res) {
+    app.get("/customersObjects", function(req, res) {
         // "customers" references the
         // "customers.js" controller and
         // "show" is a method of said
         // "customers.js" controller
-
         customers.show(req, res);
     });
 
@@ -35,7 +34,15 @@ module.exports = function(app) {
 
     });
 
-    app.get("/products", function(req, res) {
+    app.get("/productsObjects", function(req, res) {
         products.showProducts(req, res);
+    });
+
+    app.get("/ordersObjects", function(req, res) {
+        customers.showOrders(req, res);
+    });
+
+    app.post("/saveOrder", function(req, res) {
+        customers.saveOrder(req, res);
     });
 };
