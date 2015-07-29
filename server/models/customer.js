@@ -4,21 +4,21 @@ var mongoose = require("mongoose");
 
 // Create schema to start associations,
 // similar to MySQL joins
-var Schema = mongoose.Schema;
+//var Schema = mongoose.Schema;
 
 var CustomerSchema = new mongoose.Schema({
     name: { type: String, unique: true, trim: true },
-    created_at: {type: Date, default: Date.now},
-    products: [{ type: Schema.Types.ObjectId, ref: "Order" }]
+    created_at: {type: Date, default: Date.now}
+    //products: [{ type: Schema.Types.ObjectId, ref: "Order" }]
 });
 
 var OrderSchema = new mongoose.Schema({
-    _name: { type: String, type: Schema.ObjectId, ref: "Customer" },
+    // _name: { type: String, type: Schema.ObjectId, ref: "Customer" },
+    name: { type: String },
     product: String,
     quantity: Number,
     created_at: {type: Date, default: Date.now}
 });
-
 
 // Form validations
 CustomerSchema.path("name").required(true, "Customer name cannot be blank.");

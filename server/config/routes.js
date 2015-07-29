@@ -29,9 +29,7 @@ module.exports = function(app) {
     });
 
     app.get("/destroy/:id", function(req, res) {
-
         customers.deleteCustomer(req, res);
-
     });
 
     app.get("/productsObjects", function(req, res) {
@@ -45,4 +43,11 @@ module.exports = function(app) {
     app.post("/saveOrder", function(req, res) {
         customers.saveOrder(req, res);
     });
+
+    app.get("/destroy/order/:id", function(req, res) {
+        customers.deleteOrder(req, res);
+    });
+
+
+
 };

@@ -5,7 +5,7 @@
         <h1>Add a new order</h1>
 
         <p>Customer:<select name="name" ng-model="new_order.name">
-            <option ng-repeat="customer in customers" value="customer.name" ng-bind="customer.name"></option>
+            <option ng-repeat="customer in customers" value="{{ customer.name }}" ng-bind="customer.name"></option>
         </select></p>
 
         <p>Order:<select name="quantity" ng-model="new_order.quantity">
@@ -20,7 +20,7 @@
             <option value="9">9</option>
             <option value="10">10</option>
         </select> <select name="product" ng-model="new_order.product">
-            <option ng-repeat="product in products" value="product.name" ng-bind="product.name"></option>
+            <option ng-repeat="product in products" value="{{ product.name }}" ng-bind="product.name"></option>
         </select>
         </p>
 
@@ -41,11 +41,11 @@
 
             <tbody>
                 <tr ng-repeat="order in orders | filter: filter_name">
-                    <td>NAME_HERE</td>
-                    <td>PRODUCT_HERE</td>
-                    <td>QUANTITY_HERE</td>
+                    <td ng-bind="order.name"></td>
+                    <td ng-bind="order.product"></td>
+                    <td ng-bind="order.quantity"></td>
                     <td ng-bind="order.created_at.slice(0, 10) + ', ' + order.created_at.slice(12, 22)"></td>
-                    <td>DELETE_HERE</td>
+                    <td><a href="/destroy/order/{{  order._id }}">Delete Order</a></td>
                 </tr>
             </tbody>
 

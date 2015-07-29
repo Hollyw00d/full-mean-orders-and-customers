@@ -19,6 +19,7 @@ customers_app.controller("ordersController", function($scope, CustomerFactory, P
 
             $scope.new_customer = {};
 
+
         });
 
     };
@@ -44,6 +45,8 @@ customers_app.controller("ordersController", function($scope, CustomerFactory, P
             OrderFactory.getOrders(function(data) {
                 $scope.orders = data;
             });
+
+            console.log("$scope.new_order:", $scope.new_order);
 
             $scope.new_order = {};
 

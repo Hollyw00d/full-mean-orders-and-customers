@@ -88,11 +88,23 @@ module.exports = (function() {
                 else {
                     // console.log("Order saved:", order);
 
-                    console.log("Order Submitted:", req.body);
+                    console.log("Order added:", order);
                     res.send(true);
                 }
             });
 
+        },
+
+        deleteOrder: function(req, res) {
+            Order.remove({_id: req.params.id}, function(err) {
+                if(err) {
+                    console.log("Product delete error:", err);
+                }
+                else {
+                    console.log("Product deleted!");
+                    res.redirect("/");
+                }
+            });
         }
 
     }

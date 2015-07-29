@@ -14,11 +14,7 @@ module.exports = (function() {
                     res.json(results);
                 }
             });
-
-
         }
-
-
 
     }
 
